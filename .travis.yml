@@ -4,6 +4,7 @@ env:
       - REPO_DIR=xacc
       - BUILD_COMMIT=mccaskey/restclientcpp
       - PLAT=x86_64
+      - ARCH_FLAGS="-arch x86_64"
 #      - UNICODE_WIDTH=32
       - BUILD_DEPENDS=""
       - TEST_DEPENDS=""
