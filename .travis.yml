@@ -1,5 +1,6 @@
 env:
   global:
+      - DOCKER_IMAGE=xacc/manylinux1_x86_64
       - REPO_DIR=xacc
       - BUILD_COMMIT=mccaskey/restclientcpp
       - PLAT=x86_64
