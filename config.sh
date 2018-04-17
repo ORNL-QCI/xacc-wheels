@@ -30,5 +30,5 @@ function build_wheel {
 function run_tests {
     # Runs tests on installed distribution from an empty directory
     python --version
-    python -c "import pyxacc; print(pyxacc.__file__); pyxacc.Initialize()"
+    python -c "import pyxacc, os; print(pyxacc.__file__); pyxacc.Initialize(['--internal-plugin-path',os.path.dirname(os.path.realpath(pyxacc.__file__))+'/lib'])"
 }
