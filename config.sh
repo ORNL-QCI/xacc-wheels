@@ -17,8 +17,9 @@ function build_libs {
     local start_dir=$PWD
     if [ -n "$IS_OSX" ]; then
         brew install cmake boost curl 
+    else
+        yum -y install curl-devel openssl-devel
     fi
-    yum -y install curl-devel openssl-devel
     cd $start_dir
 
 }
