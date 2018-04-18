@@ -16,7 +16,7 @@ function build_libs {
     # Runs in the root directory of this repository.
     local start_dir=$PWD
     if [ -n "$IS_OSX" ]; then
-        brew install cmake boost 
+        brew install cmake # boost 
     fi
     cd $start_dir
 
