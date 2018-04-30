@@ -1,0 +1,2 @@
+from xacc/build_manylinux_wheels
+run wget https://raw.githubusercontent.com/ORNL-QCI/xacc-ibm/mccaskey/cpr_build/tools/wheels/build_ibm_manylinux_wheels.sh --no-check-certificate && sh build_ibm_manylinux_wheels.sh
