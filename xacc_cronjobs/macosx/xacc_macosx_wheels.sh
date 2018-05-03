@@ -25,16 +25,16 @@ function updateBoostLibs {
 }
 
 function clone {
-	git clone -b mccaskey/cpr_build https://github.com/ornl-qci/$1
+	git clone https://github.com/ornl-qci/$1
 }
 
-git clone --recursive -b mccaskey/cpr_build https://github.com/eclipse/xacc
+git clone --recursive https://github.com/eclipse/xacc
 clone xacc-rigetti
 clone xacc-ibm
 clone xacc-vqe
 clone tnqvm 
 
-for version in 3.4.7 # 3.3.7 3.4.7 3.5.4 3.6.4
+for version in 2.7.14 3.3.7 3.4.7 3.5.4 3.6.4
 do
 	pyenv virtualenv $version xacc-$version
 	pyenv activate xacc-$version
@@ -114,7 +114,7 @@ do
 
         PYTHONPATH=../xacc/$buildPath/xacc python setup.py build -t tmp_build --executable="/usr/bin/env python"
 
-	updateCprPath $xaccdir $buildPath/xacc/pyxaccvqe.dylib 
+	updateCprPath $xaccdir $buildPath/xacc/pyxaccvqe.so 
 	updateCprPath $xaccdir $buildPath/xacc/plugins/libxacc-vqe-fermion-compiler.dylib 
 	updateCprPath $xaccdir $buildPath/xacc/plugins/libxacc-vqe-fermion-compiler.dylib 
 	updateCprPath $xaccdir $buildPath/xacc/plugins/libxacc-vqe-ir.dylib 
@@ -122,7 +122,7 @@ do
 	updateCprPath $xaccdir $buildPath/xacc/plugins/libxacc-vqe-irtransformations.dylib 
 	updateCprPath $xaccdir $buildPath/xacc/plugins/libxacc-vqe-no-mpi.dylib 
 
-	updateBoostLibs $buildPath/xacc/pyxaccvqe.dylib
+	updateBoostLibs $buildPath/xacc/pyxaccvqe.so
 	updateBoostLibs $buildPath/xacc/plugins/libxacc-vqe-fermion-compiler.dylib
 	updateBoostLibs $buildPath/xacc/plugins/libxacc-vqe-ir.dylib
 	updateBoostLibs $buildPath/xacc/plugins/libxacc-vqe-tasks.dylib
