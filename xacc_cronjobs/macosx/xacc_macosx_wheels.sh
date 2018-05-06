@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 mkdir -p $HOME/wheelhouse
 mkdir -p $HOME/wheelhouse/xacc
 mkdir -p $HOME/wheelhouse/rigetti
@@ -28,8 +30,8 @@ function clone {
 	git clone https://github.com/ornl-qci/$1
 }
 
-git clone --recursive https://github.com/eclipse/xacc
-clone xacc-rigetti
+#git clone --recursive https://github.com/eclipse/xacc
+#clone xacc-rigetti
 clone xacc-ibm
 clone xacc-vqe
 clone tnqvm 
@@ -53,10 +55,14 @@ do
 	echo "./xacc" >> build/lib.$libPath-$ver/xacc.pth
 
 	install_name_tool -change libcpr.dylib @rpath/libcpr.dylib $buildPath/xacc/lib/libxacc.dylib
+	install_name_tool -add_rpath "@loader_path" $buildPath/xacc/lib/libboost_regex.dylib
+	install_name_tool -add_rpath "@loader_path" $buildPath/xacc/lib/libboost_chrono.dylib
+	install_name_tool -add_rpath "@loader_path" $buildPath/xacc/lib/libboost_filesystem.dylib
+	install_name_tool -add_rpath "@loader_path" $buildPath/xacc/lib/libboost_graph.dylib
 	install_name_tool -change libboost_system.dylib @rpath/libboost_system.dylib $buildPath/xacc/lib/libboost_filesystem.dylib
 	install_name_tool -change libboost_system.dylib @rpath/libboost_system.dylib $buildPath/xacc/lib/libboost_chrono.dylib
 	install_name_tool -change libboost_regex.dylib @rpath/libboost_regex.dylib $buildPath/xacc/lib/libboost_graph.dylib
-	
+
 	updateCprPath $PWD $buildPath/xacc/pyxacc.so
 	updateBoostLibs $buildPath/xacc/lib/libxacc-quantum-gate.dylib
 	updateBoostLibs $buildPath/xacc/lib/libxacc-quantum-aqc.dylib
