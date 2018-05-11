@@ -1,6 +1,0 @@
-[submodule "xacc"]
-	path = xacc
-	url = https://github.com/eclipse/xacc.git
-[submodule "multibuild"]
-	path = multibuild
-	url = https://github.com/ornl-qci/multibuild
