@@ -3,11 +3,6 @@
 set -e
 
 mkdir -p $HOME/wheelhouse
-mkdir -p $HOME/wheelhouse/xacc
-mkdir -p $HOME/wheelhouse/rigetti
-mkdir -p $HOME/wheelhouse/ibm
-mkdir -p $HOME/wheelhouse/tnqvm
-mkdir -p $HOME/wheelhouse/vqe
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
