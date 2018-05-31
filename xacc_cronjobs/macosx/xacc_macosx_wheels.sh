@@ -40,7 +40,7 @@ do
 	export buildPath=build/lib.$libPath-$ver
 	echo "./xacc" >> build/lib.$libPath-$ver/xacc.pth
 	python setup.py bdist_wheel --skip-build
-	mv dist/*.whl $HOME/wheelhouse/xacc
+	mv dist/*.whl $HOME/wheelhouse/
 	
         export prefix="build\/lib."
         export suffix="-$ver"
@@ -56,27 +56,27 @@ do
         PYTHONPATH=../xacc/$buildPath/xacc python setup.py build -t tmp_build --executable="/usr/bin/env python"
 
 	python setup.py bdist_wheel --skip-build
-	mv dist/*.whl $HOME/wheelhouse/rigetti
+	mv dist/*.whl $HOME/wheelhouse/
 
 	# ---------------- IBM BUILD -------------------#
 	cd ../xacc-ibm
         PYTHONPATH=../xacc/$buildPath/xacc python setup.py build -t tmp_build --executable="/usr/bin/env python"
 	python setup.py bdist_wheel --skip-build
-	mv dist/*.whl $HOME/wheelhouse/ibm
+	mv dist/*.whl $HOME/wheelhouse/
 
 	# ---------------- TNQVM BUILD -------------------#
 	cd ../tnqvm
 
         PYTHONPATH=../xacc/$buildPath/xacc python setup.py build -t tmp_build --executable="/usr/bin/env python"
 	python setup.py bdist_wheel --skip-build
-	mv dist/*.whl $HOME/wheelhouse/tnqvm
+	mv dist/*.whl $HOME/wheelhouse/
 
 	# ---------------- VQE BUILD -------------------#
 	cd ../xacc-vqe
 
         PYTHONPATH=../xacc/$buildPath/xacc python setup.py build -t tmp_build --executable="/usr/bin/env python"
 	python setup.py bdist_wheel --skip-build
-	mv dist/*.whl $HOME/wheelhouse/vqe
+	mv dist/*.whl $HOME/wheelhouse/
 
 	cd ..
 	python -m pip uninstall -y xacc
