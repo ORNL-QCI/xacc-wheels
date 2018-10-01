@@ -8,7 +8,7 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 function clone {
-	git clone https://github.com/ornl-qci/$1
+	git clone --recursive https://github.com/ornl-qci/$1
 }
 
 git clone --recursive https://github.com/eclipse/xacc
