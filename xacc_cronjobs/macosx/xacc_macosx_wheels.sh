@@ -17,7 +17,7 @@ clone xacc-ibm
 clone xacc-vqe
 clone tnqvm 
 
-for version in 2.7.14 3.3.7 3.4.7 3.5.4 3.6.4 
+for version in 2.7.14 3.4.7 3.5.4 3.6.4 
 do
 	pyenv virtualenv $version xacc-$version
 	pyenv activate xacc-$version
