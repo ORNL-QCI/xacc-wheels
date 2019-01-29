@@ -16,6 +16,7 @@ clone xacc-rigetti
 clone xacc-ibm
 clone xacc-vqe
 clone tnqvm 
+clone xacc-dwave 
 
 for version in 2.7.14 3.4.7 3.5.4 3.6.4 
 do
@@ -48,6 +49,13 @@ do
 
 	# ---------------- RIGETTI BUILD -------------------#
 	cd ../xacc-rigetti
+        PYTHONPATH=../xacc/$buildPath/xacc python setup.py build -t tmp_build --executable="/usr/bin/env python"
+
+	python setup.py bdist_wheel --skip-build
+	mv dist/*.whl $HOME/wheelhouse/
+
+	# ---------------- DWAVE BUILD -------------------#
+	cd ../xacc-dwave
         PYTHONPATH=../xacc/$buildPath/xacc python setup.py build -t tmp_build --executable="/usr/bin/env python"
 
 	python setup.py bdist_wheel --skip-build
